@@ -1,0 +1,13 @@
+# Banco MySQL do Cuidado Puro, pronto para rodar como "Private Service"
+# no Render (ou qualquer host Docker). O schema completo (16 tabelas +
+# dados de teste) é carregado automaticamente na primeira inicialização,
+# via docker-entrypoint-initdb.d — recurso nativo da imagem oficial do MySQL.
+FROM mysql:8.0
+
+# Autenticação compatível com clientes mais antigos (ex.: PyMySQL em
+# algumas versões) — evita erro "Authentication plugin 'caching_sha2_password'".
+CMD ["mysqld", "--default-authentication-plugin=mysql_native_password"]
+
+COPY sql/cuidado_puro_v2.sql /docker-entrypoint-initdb.d/01-schema.sql
+
+EXPOSE 3306
