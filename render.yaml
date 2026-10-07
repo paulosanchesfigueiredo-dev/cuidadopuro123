@@ -1,0 +1,72 @@
+# Blueprint do Render para o Cuidado Puro: banco (MySQL em container),
+# API (FastAPI) e front-end (site estático), como 3 serviços ligados.
+#
+# Este arquivo espera o repositório organizado assim na RAIZ do repo
+# (não dentro de nenhuma subpasta) — veja deploy/RENDER_DEPLOY.md para o
+# passo a passo completo de como montar essa estrutura a partir dos dois
+# zips já entregues:
+#
+#   render.yaml          (este arquivo)
+#   deploy/Dockerfile.mysql
+#   sql/cuidado_puro_v2.sql
+#   api/                 (main.py, models.py, schemas.py, ...)
+#   frontend/             (index.html, telas/, css/, js/ — o site)
+#
+# Como usar:
+#   1. Suba essa estrutura para um repositório no GitHub.
+#   2. No Render: New > Blueprint > aponte para o repositório.
+#   3. O Render lê este arquivo e cria os 3 serviços abaixo automaticamente.
+#
+# IMPORTANTE: o Render não tem MySQL gerenciado nativo (só Postgres), então
+# o banco aqui roda como um "Private Service" Docker com disco persistente —
+# funciona igual a um MySQL normal, só que mantido pelo próprio Render.
+
+services:
+  # ------------------------------------------------------------------
+  # 1) Banco de dados MySQL (16 tabelas + dados de teste já carregados)
+  # ------------------------------------------------------------------
+  - type: pserv
+    name: cuidadopuro-mysql
+    env: docker
+    dockerfilePath: ./deploy/Dockerfile.mysql
+    dockerContext: .
+    plan: starter
+    disk:
+      name: cuidadopuro-mysql-data
+      mountPath: /var/lib/mysql
+      sizeGB: 1
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        generateValue: true
+      - key: MYSQL_DATABASE
+        value: cuidado_puro_v2
+
+  # ------------------------------------------------------------------
+  # 2) API (FastAPI) — conecta no banco acima pela rede interna do Render
+  # ------------------------------------------------------------------
+  - type: web
+    name: cuidadopuro-api
+    env: python
+    region: oregon
+    plan: starter
+    rootDir: api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      # O Render não monta sozinho a string de conexão de um "Private
+      # Service" Docker (isso é nativo só para o Postgres gerenciado dele).
+      # Defina esta variável manualmente no painel, depois que o serviço
+      # cuidadopuro-mysql já estiver no ar — o passo a passo exato está em
+      # deploy/RENDER_DEPLOY.md.
+      - key: DATABASE_URL
+        sync: false
+
+  # ------------------------------------------------------------------
+  # 3) Front-end (site estático)
+  # ------------------------------------------------------------------
+  - type: web
+    name: cuidadopuro-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: ""
+    staticPublishPath: .
