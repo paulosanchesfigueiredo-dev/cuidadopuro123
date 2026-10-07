@@ -1,0 +1,362 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #305eb1 0%, #162d61 100%);
+    --card-gradient: linear-gradient(180deg, #3a2fa8 0%, #2196f3 100%);
+    --primary-color: #67c2b8;
+    --hover-color: #55a89f;
+    --text-white: #ffffff;
+    --text-black: #000000;
+}
+
+
+/* Estilos do Dashboard Cliente - segue estética do projeto */
+
+.dashboard-container {
+    width: min(1100px, calc(100% - 160px));
+    margin: 40px auto 80px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.btn {
+    text-decoration: none;
+
+    display: block;
+
+    padding: 18px;
+
+    border-radius: 50px;
+
+    font-size: 2.1rem;
+    font-weight: bold;
+
+    color: var(--text-white);
+
+    background-color: var(--primary-color);
+
+    transition: 0.3s;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================== BARRA LATERAL (SIDEBAR) ==================== */
+.sidebar-menu {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    bottom: 0;
+    width: 70px;
+    /* Mantém a largura original para o primeiro ícone aparecer */
+    background: rgba(255, 255, 255, 0.05);
+    /* Mantém a cor de fundo original sutil */
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 10px;
+    transition: width 0.3s ease;
+    z-index: 900;
+    overflow: hidden;
+}
+
+/* Quando passa o mouse na barra lateral ela expande */
+.sidebar-menu:hover {
+    width: 230px;
+}
+
+.sidebar-brand,
+.sidebar-links,
+.sidebar-logout {
+    width: 100%;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-white);
+    margin-bottom: 24px;
+}
+
+/* REGRA: Mantém o primeiro ícone (brand) visível, mas esconde os ícones dos links internos */
+.sidebar-links .sidebar-icon {
+    display: none !important;
+}
+
+.sidebar-icon {
+    font-size: 1.3rem;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Texto das opções oculto por padrão */
+.sidebar-label {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Mostra os textos das opções após passar o mouse */
+.sidebar-menu:hover .sidebar-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 16px;
+    transition: background 0.25s ease;
+}
+
+.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* CORREÇÃO: Botão logout com a cor original (var(--primary-color)) e invisível por padrão */
+.sidebar-logout {
+    width: 100%;
+    margin-top: auto;
+    padding: 12px 12px;
+    background: var(--primary-color);
+    /* Restaurada a cor esverdeada original do projeto */
+    border: none;
+    border-radius: 24px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0;
+    /* Totalmente invisível por padrão */
+    transform: scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* O botão de Logout ressurge de forma suave apenas com o hover na barra lateral */
+.sidebar-menu:hover .sidebar-logout {
+    opacity: 1;
+    /* Torna visível */
+    transform: scale(1);
+}
+
+.sidebar-logout:hover {
+    background: var(--hover-color);
+    /* Mantém a cor de hover original do projeto */
+}
+
+.search-panel {
+    width: 200%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: 0 20px 100px rgba(0, 0, 0, 0.18);
+}
+
+.search-panel h1 {
+    font-size: 2rem;
+    color: var(--text-white);
+    margin-bottom: 14px;
+    margin-left: 33%;
+}
+
+.search-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-row .btn {
+    padding: 10px 16px;
+    min-width: 100px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    flex: none;
+}
+
+.search-input {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    color: var(--text-white);
+    font-weight: 600;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400
+}
+
+.filters {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+}
+
+.filter {
+    min-width: 240px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    border: none;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text-white);
+}
+
+.cards-grid {
+    display: grid;
+    /* Alinhamos as 3 colunas de forma fixa com um tamanho máximo amigável */
+    grid-template-columns: repeat(4, minmax(330px, 180px));
+    gap: 24px;
+    margin-top: 50px;
+    /* Um pouco mais de espaço para não grudar na busca */
+
+    /* CORREÇÃO AQUI: Mudamos de 75% para 100% da área disponível na esquerda */
+    width: 100%;
+    max-width: 900px;
+    /* Evita que os cards fiquem esticados demais */
+
+    /* Garante o alinhamento total à esquerda */
+    justify-content: start;
+    margin-left: -130px;
+    margin-right: auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* CORREÇÃO: No CSS o correto é 'flex-start' para alinhar à esquerda, não 'left' */
+    align-items: center;
+    text-align: center;
+    /* Centraliza os textos e o botão dentro do próprio card */
+    padding: 24px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.2s ease;
+    /* Efeito suave ao passar o mouse */
+}
+
+/* Efeito opcional: deixa o card responsivo ao passar o mouse */
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* Transforma a foto quadrada em redonda (estilo perfil) */
+    background: rgba(255, 255, 255, 0.02);
+    margin-bottom: 5px;
+}
+
+.card .info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    /* Garante que os textos usem a largura total interna */
+}
+
+.card .info h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card .info .meta {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 0.90rem;
+}
+
+.card .info .rating {
+    margin: 0;
+    color: #ffca28;
+    /* Cor amarela padrão para estrelas de avaliação */
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.card .btn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    align-self: center;
+    margin-top: 10px;
+    text-decoration: none;
+    /* Remove qualquer sublinhado do botão */
+}
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        width: 92%;
+        margin-top: 120px;
+        margin-left: 0;
+    }
+
+    .sidebar-menu {
+        position: static;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 14px 16px;
+        top: auto;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .sidebar-menu:hover {
+        width: 100%;
+    }
+
+    .sidebar-label {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .search-row {
+        flex-direction: column;
+        align-items: stretch
+    }
+
+    .search-row .btn {
+        width: 100%;
+        justify-content: center
+    }
+
+    .filter {
+        width: 100%;
+    }
+}
