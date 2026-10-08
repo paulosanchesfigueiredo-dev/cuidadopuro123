@@ -1,0 +1,288 @@
+{
+  "descricao_projeto": "Estilos do Dashboard Cliente - segue estética do projeto",
+  "estilos_css": {
+    "dashboard-container": {
+      "width": "min(1100px, calc(100% - 160px))",
+      "margin": "40px auto 80px auto",
+      "display": "flex",
+      "flex-direction": "column",
+      "gap": "28px",
+      "align-items": "center",
+      "box-sizing": "border-box"
+    },
+    "sidebar-menu": {
+      "_comentario_1": "BARRA LATERAL (SIDEBAR)",
+      "position": "fixed",
+      "top": "90px",
+      "left": "0",
+      "bottom": "0",
+      "width": "70px",
+      "_nota_width": "Mantém a largura original para o primeiro ícone aparecer",
+      "background": "rgba(255,255,255,0.05)",
+      "_nota_background": "Mantém a cor de fundo original sutil",
+      "border-right": "1px solid rgba(255,255,255,0.12)",
+      "display": "flex",
+      "flex-direction": "column",
+      "align-items": "center",
+      "justify-content": "space-between",
+      "padding": "18px 10px",
+      "transition": "width 0.3s ease",
+      "z-index": 900,
+      "overflow": "hidden"
+    },
+    "sidebar-menu_hover": {
+      "_comentario_2": "Quando passa o mouse na barra lateral ela expande",
+      "width": "220px"
+    },
+    "sidebar-brand_links_logout": {
+      "selector": ".sidebar-brand, .sidebar-links, .sidebar-logout",
+      "width": "100%"
+    },
+    "sidebar-brand": {
+      "display": "flex",
+      "align-items": "center",
+      "gap": "12px",
+      "color": "var(--text-white)",
+      "margin-bottom": "24px"
+    },
+    "sidebar-links_sidebar-icon": {
+      "_comentario_regra": "REGRA: Mantém o primeiro ícone (brand) visível, mas esconde os ícones dos links internos",
+      "display": "none !important"
+    },
+    "sidebar-icon": {
+      "font-size": "1.3rem",
+      "min-width": "30px",
+      "text-align": "center"
+    },
+    "sidebar-label": {
+      "_comentario_3": "Texto das opções oculto por padrão",
+      "opacity": 0,
+      "transform": "translateX(-10px)",
+      "transition": "opacity 0.3s ease, transform 0.3s ease",
+      "white-space": "nowrap"
+    },
+    "sidebar-menu_hover_sidebar-label": {
+      "_comentario_4": "Mostra os textos das opções após passar o mouse",
+      "opacity": 1,
+      "transform": "translateX(0)"
+    },
+    "sidebar-links": {
+      "display": "flex",
+      "flex-direction": "column",
+      "gap": "12px"
+    },
+    "sidebar-link": {
+      "display": "flex",
+      "align-items": "center",
+      "gap": "12px",
+      "color": "rgba(255,255,255,0.85)",
+      "text-decoration": "none",
+      "padding": "12px 10px",
+      "border-radius": "16px",
+      "transition": "background 0.25s ease"
+    },
+    "sidebar-link_hover": {
+      "background": "rgba(255,255,255,0.08)"
+    },
+    "sidebar-logout": {
+      "_comentario_correcao": "CORREÇÃO: Botão logout com a cor original (var(--primary-color)) e invisível por padrão",
+      "width": "100%",
+      "margin-top": "auto",
+      "padding": "12px 12px",
+      "background": "var(--primary-color)",
+      "_nota_background": "Restaurada a cor esverdeada original do projeto",
+      "border": "none",
+      "border-radius": "24px",
+      "color": "white",
+      "font-weight": 700,
+      "cursor": "pointer",
+      "opacity": 0,
+      "_nota_opacity": "Totalmente invisível por padrão",
+      "transform": "scale(0.9)",
+      "transition": "opacity 0.25s ease, transform 0.25s ease, background 0.25s ease",
+      "white-space": "nowrap"
+    },
+    "sidebar-menu_hover_sidebar-logout": {
+      "_comentario_5": "O botão de Logout ressurge de forma suave apenas com o hover na barra lateral",
+      "opacity": 1,
+      "_nota_opacity": "Torna visível",
+      "transform": "scale(1)"
+    },
+    "sidebar-logout_hover": {
+      "background": "var(--hover-color)",
+      "_nota_background": "Mantém a cor de hover original do projeto"
+    },
+    "search-panel": {
+      "width": "200%",
+      "max-width": "1000px",
+      "background": "rgba(255, 255, 255, 0.06)",
+      "border": "1px solid rgba(255, 255, 255, 0.12)",
+      "border-radius": "24px",
+      "padding": "28px 24px",
+      "box-shadow": "0 20px 100px rgba(0, 0, 0, 0.18)"
+    },
+    "search-panel_h1": {
+      "font-size": "2rem",
+      "color": "var(--text-white)",
+      "margin-bottom": "14px"
+    },
+    "search-row": {
+      "display": "flex",
+      "gap": "10px",
+      "align-items": "center",
+      "flex-wrap": "wrap"
+    },
+    "search-row_btn": {
+      "padding": "10px 16px",
+      "min-width": "100px",
+      "font-size": "0.95rem",
+      "white-space": "nowrap",
+      "flex": "none"
+    },
+    "search-input": {
+      "flex": 1,
+      "padding": "14px 18px",
+      "border-radius": "50px",
+      "border": "2px solid rgba(255,255,255,0.12)",
+      "background": "transparent",
+      "color": "var(--text-white)",
+      "font-weight": 600,
+      "outline": "none"
+    },
+    "search-input_placeholder": {
+      "color": "rgba(255,255,255,0.7)",
+      "font-weight": 400
+    },
+    "filters": {
+      "margin-top": "18px",
+      "display": "flex",
+      "flex-wrap": "nowrap",
+      "gap": "16px"
+    },
+    "filter": {
+      "min-width": "240px",
+      "padding": "12px 14px",
+      "border-radius": "16px",
+      "border": "none",
+      "background": "rgba(255,255,255,0.06)",
+      "color": "var(--text-white)"
+    },
+    "cards-grid": {
+      "_comentario_grid": "Alinhamos as 3 colunas de forma fixa com um tamanho máximo amigável",
+      "grid-template-columns": "repeat(3, minmax(220px, 280px))",
+      "gap": "24px",
+      "margin-top": "30px",
+      "_nota_margin": "Um pouco mais de espaço para não grudar na busca",
+      "_comentario_correcao": "CORREÇÃO AQUI: Mudamos de 75% para 100% da área disponível na esquerda",
+      "width": "100%",
+      "max-width": "900px",
+      "_nota_maxwidth": "Evita que os cards fiquem esticados demais",
+      "_comentario_alinhamento": "Garante o alinhamento total à esquerda",
+      "justify-content": "start",
+      "margin-left": "0",
+      "margin-right": "auto"
+    },
+    "card": {
+      "display": "flex",
+      "flex-direction": "column",
+      "gap": "15px",
+      "_comentario_correcao": "CORREÇÃO: No CSS o correto é 'flex-start' para alinhar à esquerda, não 'left'",
+      "align-items": "center",
+      "text-align": "center",
+      "_nota_textalign": "Centraliza os textos e o botão dentro do próprio card",
+      "padding": "24px",
+      "border-radius": "24px",
+      "background": "rgba(255, 255, 255, 0.05)",
+      "box-shadow": "0 16px 40px rgba(0,0,0,0.18)",
+      "border": "1px solid rgba(255, 255, 255, 0.08)",
+      "transition": "transform 0.2s ease",
+      "_nota_transition": "Efeito suave ao passar o mouse"
+    },
+    "card_hover": {
+      "_comentario_opcional": "Efeito opcional: deixa o card responsivo ao passar o mouse",
+      "transform": "translateY(-5px)"
+    },
+    "card_img": {
+      "width": "110px",
+      "height": "110px",
+      "object-fit": "cover",
+      "border-radius": "50%",
+      "_nota_radius": "Transforma a foto quadrada em redonda (estilo perfil)",
+      "background": "rgba(255,255,255,0.02)",
+      "margin-bottom": "5px"
+    },
+    "card_info": {
+      "display": "flex",
+      "flex-direction": "column",
+      "gap": "8px",
+      "width": "100%",
+      "_nota_width": "Garante que os textos usem a largura total interna"
+    },
+    "card_info_h3": {
+      "margin": "0",
+      "color": "#ffffff",
+      "font-size": "1.2rem",
+      "font-weight": 600
+    },
+    "card_info_meta": {
+      "margin": "0",
+      "color": "rgba(255,255,255,0.70)",
+      "font-size": "0.90rem"
+    },
+    "card_info_rating": {
+      "margin": "0",
+      "color": "#ffca28",
+      "_nota_color": "Cor amarela padrão para estrelas de avaliação",
+      "font-weight": 700,
+      "display": "flex",
+      "align-items": "center",
+      "justify-content": "center",
+      "gap": "5px"
+    },
+    "card_btn": {
+      "padding": "10px 24px",
+      "border-radius": "30px",
+      "font-size": "0.95rem",
+      "align-self": "center",
+      "margin-top": "10px",
+      "text-decoration": "none",
+      "_nota_decoration": "Remove qualquer sublinhado do botão"
+    },
+    "media_query_max_width_900px": {
+      "dashboard-container": {
+        "width": "92%",
+        "margin-top": "120px",
+        "margin-left": "0"
+      },
+      "sidebar-menu": {
+        "position": "static",
+        "width": "100%",
+        "flex-direction": "row",
+        "justify-content": "space-between",
+        "padding": "14px 16px",
+        "top": "auto",
+        "height": "auto",
+        "border-right": "none",
+        "border-bottom": "1px solid rgba(255,255,255,0.12)"
+      },
+      "sidebar-menu_hover": {
+        "width": "100%"
+      },
+      "sidebar-label": {
+        "opacity": 1,
+        "transform": "translateX(0)"
+      },
+      "search-row": {
+        "flex-direction": "column",
+        "align-items": "stretch"
+      },
+      "search-row_btn": {
+        "width": "100%",
+        "justify-content": "center"
+      },
+      "filter": {
+        "width": "100%"
+      }
+    }
+  }
+}
