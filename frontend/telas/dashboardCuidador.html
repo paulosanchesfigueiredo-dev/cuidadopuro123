@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Cuidador — Cuidado Puro</title>
+  <link rel="stylesheet" href="../css/dashboardCuidador.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <!-- Login -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <p class="eyebrow">Área do cuidador</p>
+      <h1>Cuidado Puro</h1>
+      <p class="login-hint" id="login-error">Você precisa entrar com seu e-mail e senha de cuidador para ver este painel.</p>
+      <a href="telaLogin.html" class="btn-primary" style="text-decoration:none;display:inline-block;text-align:center;">Ir para o login</a>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">♡</span>
+        <span class="brand-text">Cuidado Puro</span>
+      </div>
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-item active" data-panel="overview" data-label="Visão geral">
+          <i data-lucide="layout-dashboard"></i><span>Visão geral</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="agenda" data-label="Agenda">
+          <i data-lucide="calendar-days"></i><span>Agenda</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="requests" data-label="Solicitações">
+          <i data-lucide="clipboard-list"></i><span>Solicitações</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="patients" data-label="Pacientes">
+          <i data-lucide="users"></i><span>Pacientes</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="messages" data-label="Mensagens">
+          <i data-lucide="message-circle"></i><span>Mensagens</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="payments" data-label="Minha assinatura">
+          <i data-lucide="wallet"></i><span>Minha assinatura</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="settings" data-label="Configurações">
+          <i data-lucide="settings"></i><span>Configurações</span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" id="logout-btn" class="btn-ghost"><i data-lucide="log-out"></i><span>Sair</span></button>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="top">
+        <h2 id="panel-title">Visão geral</h2>
+        <p class="top-sub">Painel do cuidador — Cuidado Puro Home Health</p>
+      </header>
+
+      <!-- OVERVIEW -->
+      <section id="panel-overview" class="panel active">
+        <div class="stats">
+          <article class="stat-card">
+            <span class="stat-label">Consultas</span>
+            <strong id="stat-agenda">0</strong>
+            <span class="stat-note">agendadas</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Solicitações</span>
+            <strong id="stat-requests">0</strong>
+            <span class="stat-note">pendentes</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Pacientes</span>
+            <strong id="stat-patients">0</strong>
+            <span class="stat-note">ativos</span>
+          </article>
+        </div>
+        <div class="card">
+          <h3>Próximos na agenda</h3>
+          <div id="overview-agenda" class="list"></div>
+        </div>
+        <div class="card">
+          <h3>Solicitações recentes</h3>
+          <div id="overview-requests" class="list"></div>
+        </div>
+        <div class="card">
+          <h3>Últimas mensagens</h3>
+          <div id="overview-messages" class="list"></div>
+        </div>
+      </section>
+
+      <!-- AGENDA -->
+      <section id="panel-agenda" class="panel">
+        <p class="hint">Agendamentos reais criados pelos pacientes através do match. Use os botões para aceitar, concluir ou cancelar.</p>
+        <div id="agenda-list" class="list"></div>
+      </section>
+
+      <!-- REQUESTS (agendamentos aguardando aceite do cuidador) -->
+      <section id="panel-requests" class="panel">
+        <p class="hint">Agendamentos novos que ainda aguardam sua confirmação.</p>
+        <div id="requests-list" class="list"></div>
+      </section>
+
+      <!-- PATIENTS (derivado da agenda real) -->
+      <section id="panel-patients" class="panel">
+        <p class="hint">Pacientes com quem você já tem algum agendamento.</p>
+        <div id="patients-list" class="list"></div>
+      </section>
+
+      <!-- MESSAGES -->
+      <section id="panel-messages" class="panel">
+        <div class="panel-actions">
+          <a href="chat.html" class="btn-primary" style="text-decoration:none;display:inline-block;">Abrir chat completo</a>
+        </div>
+        <div id="messages-list" class="list"></div>
+      </section>
+
+      <!-- PAYMENTS (assinatura do próprio cuidador junto à plataforma) -->
+      <section id="panel-payments" class="panel">
+        <p class="hint">Sua mensalidade de acesso à plataforma (o Cuidado Puro não intermedia o pagamento do serviço prestado ao paciente — isso é acertado direto entre vocês).</p>
+        <div id="payments-list" class="list"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="panel-settings" class="panel">
+        <div class="card form-card">
+          <h3>Preferências do painel</h3>
+          <p class="hint">Apenas uma conveniência local neste navegador — não altera seu cadastro no banco.</p>
+          <label>Apelido de exibição</label>
+          <input id="s-name" type="text" placeholder="Como você quer ser chamado(a) neste painel">
+          <button type="button" id="save-settings" class="btn-primary">Salvar</button>
+          <p id="settings-saved" class="success-msg"></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/dashboardCuidador.js"></script>
+</body>
+</html>

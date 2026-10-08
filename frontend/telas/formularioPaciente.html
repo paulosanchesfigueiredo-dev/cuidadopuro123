@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário de Saúde - Cuidado Puro</title>
+    <link rel="stylesheet" href="../css/formularioPaciente.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html"><img src="img/logo_(2).png" alt="Logo"></a>
+            <a href="../index.html" class="logo-text">Cuidado Puro</a>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="beneficios.html">Benefícios</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="opinioes.html">Opiniões</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <button onclick="window.location.href='telaLogin.html'" class="btn-login">Entrar</button>
+    </header>
+
+    <main class="form-container">
+
+        <div class="form-header">
+            <h1>Formulário do Paciente</h1>
+            <p>Preencha os dados da conta e responda às questões para mapearmos o histórico clínico ideal.</p>
+        </div>
+
+        <div class="quiz-card">
+            <form id="formPaciente" action="#" method="POST">
+
+                <div class="form-section">
+                    <h2 class="section-title">Dados de Criação da Conta (Responsável)</h2>
+                    
+                    <div class="input-grid">
+                        <div class="field-group">
+                            <label for="paciente-nome-cadastro">Nome Completo do Responsável</label>
+                            <input type="text" id="paciente-nome-cadastro" placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-cpf">CPF (Apenas números)</label>
+                            <input type="text" id="paciente-cpf" placeholder="Ex: 12345678901" maxlength="11" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-rg">RG</label>
+                            <input type="text" id="paciente-rg" placeholder="Digite seu RG" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-idade-cadastro">Idade do Responsável</label>
+                            <input type="number" id="paciente-idade-cadastro" placeholder="Sua idade" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-telefone">Telefone / WhatsApp</label>
+                            <input type="tel" id="paciente-telefone" placeholder="Ex: 11999999999" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-endereco">Endereço Residencial e Numero</label>
+                            <input type="text" id="paciente-endereco" placeholder="Rua, Número, Bairro e Cidade" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-cidade">Cidade</label>
+                            <input type="text" id="paciente-cidade" placeholder="Ex: Maringá" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-cep">CEP</label>
+                            <input type="text" id="paciente-cep" placeholder="Ex: 87000-000" maxlength="9" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-data-nascimento">Data de Nascimento do Paciente</label>
+                            <input type="date" id="paciente-data-nascimento" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-email">E-mail (Seu usuário de login)</label>
+                            <input type="email" id="paciente-email" placeholder="nome@email.com" required>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="paciente-senha">Senha de Acesso</label>
+                            <input type="password" id="paciente-senha" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="border: 0; height: 1px; background: rgba(255,255,255,0.1); margin: 20px 0;">
+
+                <div class="form-section">
+                    <h2 class="section-title">Dados Clínicos Iniciais do Paciente</h2>
+
+                    <div class="input-grid">
+                        <div class="field-group">
+                            <label for="paciente-nome">Nome do Paciente/Assistido</label>
+                            <input type="text" id="paciente-nome" placeholder="Ex: Maria Carmo Silva" required>
+                        </div>
+                        <div class="field-group">
+                            <label for="paciente-idade">Idade do Paciente</label>
+                            <input type="number" id="paciente-idade" placeholder="Ex: 78" required>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="condicao-principal">Condição de Saúde Principal / Diagnóstico</label>
+                        <select id="condicao-principal" required>
+                            <option value="" disabled selected>Selecione a condição principal...</option>
+                            <option value="idoso-limitacao">Pessoa Idosa com Redução de Mobilidade</option>
+                            <option value="pos-cirurgico">Recuperação Pós-Cirúrgica (Home Care)</option>
+                            <option value="necessidade-especial">Portador de Necessidades Especiais Crônicas</option>
+                            <option value="neurodegenerativa">Condição Neurodegenerativa (Alzheimer/Parkinson)</option>
+                            <option value="outros">Outras Demandas de Suporte Diário</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">Nível de Suporte e Dependência</h2>
+                    <label style="font-size: 0.95rem; opacity: 0.9;">Qual é o grau de assistência diária necessário para a rotina?</label>
+
+                    <div class="selection-grid">
+                        <label class="selection-option">
+                            <input type="radio" name="nivel-suporte" value="basico" checked>
+                            <div class="selection-box">
+                                <span>🟢</span>
+                                Suporte Básico
+                                <p style="font-size:0.75rem; font-weight:300; margin-top:5px; opacity:0.8;">Apenas monitoramento preventivo e lembretes.</p>
+                            </div>
+                        </label>
+
+                        <label class="selection-option">
+                            <input type="radio" name="nivel-suporte" value="intermediario">
+                            <div class="selection-box">
+                                <span>🟡</span>
+                                Intermediário
+                                <p style="font-size:0.75rem; font-weight:300; margin-top:5px; opacity:0.8;">Ajuda para locomoção, higiene e medicamentos.</p>
+                            </div>
+                        </label>
+
+                        <label class="selection-option">
+                            <input type="radio" name="nivel-suporte" value="intensivo">
+                            <div class="selection-box">
+                                <span>🔴</span>
+                                Monitoramento 24/7
+                                <p style="font-size:0.75rem; font-weight:300; margin-top:5px; opacity:0.8;">Assistência contínua, cuidados médicos e alertas ativos.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">Histórico de Alergias e Cuidados Especiais</h2>
+                    <div class="field-group">
+                        <label for="observacoes">Liste restrições alimentares, alergias a medicamentos ou cuidados específicos:</label>
+                        <textarea id="observacoes" rows="4" placeholder="Ex: Alergia a Dipirona. Necessita de auxílio total para transferências da cama para a cadeira de rodas..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-back" onclick="window.history.back()">Voltar</button>
+                    <button type="submit" class="btn-cadastrar button">Finalizar Cadastro</button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    <script src="../js/config.js"></script>
+    <script src="../js/formularioPaciente.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Paciente — Cuidado Puro</title>
+  <link rel="stylesheet" href="../css/dashboardPacienteApp.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <!-- Login -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <p class="eyebrow">Área do paciente</p>
+      <h1>Cuidado Puro</h1>
+      <p class="login-hint" id="login-error">Você precisa entrar com seu e-mail e senha de paciente para ver este painel.</p>
+      <a href="telaLogin.html" class="btn-primary" style="text-decoration:none;display:inline-block;text-align:center;">Ir para o login</a>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">♡</span>
+        <span class="brand-text">Cuidado Puro</span>
+      </div>
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-item active" data-panel="overview" data-label="Visão geral">
+          <i data-lucide="layout-dashboard"></i><span>Visão geral</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="agenda" data-label="Agenda">
+          <i data-lucide="calendar-days"></i><span>Agenda</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="history" data-label="Histórico">
+          <i data-lucide="history"></i><span>Histórico</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="posalta" data-label="Modo Pós-Alta">
+          <i data-lucide="pill"></i><span>Modo Pós-Alta</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="messages" data-label="Mensagens">
+          <i data-lucide="message-circle"></i><span>Mensagens</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="payments" data-label="Minha assinatura">
+          <i data-lucide="wallet"></i><span>Minha assinatura</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="settings" data-label="Configurações">
+          <i data-lucide="settings"></i><span>Configurações</span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" id="logout-btn" class="btn-ghost"><i data-lucide="log-out"></i><span>Sair</span></button>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="top">
+        <h2 id="panel-title">Visão geral</h2>
+        <p class="top-sub">Painel do paciente — Cuidado Puro Home Health</p>
+      </header>
+
+      <!-- OVERVIEW -->
+      <section id="panel-overview" class="panel active">
+        <div class="stats">
+          <article class="stat-card">
+            <span class="stat-label">Consultas</span>
+            <strong id="stat-agenda">0</strong>
+            <span class="stat-note">agendadas</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Histórico</span>
+            <strong id="stat-history">0</strong>
+            <span class="stat-note">atendimentos</span>
+          </article>
+        </div>
+        <div class="card">
+          <h3>Próximos na agenda</h3>
+          <div id="overview-agenda" class="list"></div>
+        </div>
+      </section>
+
+      <!-- AGENDA -->
+      <section id="panel-agenda" class="panel">
+        <div class="panel-actions">
+          <button type="button" id="add-agenda" class="btn-primary">+ Buscar cuidador</button>
+        </div>
+        <div id="agenda-list" class="list"></div>
+        <div id="match-form-wrap" class="card hidden">
+          <h3>Cuidadores disponíveis para você</h3>
+          <div id="match-list" class="list"></div>
+          <div class="panel-actions" style="margin-top:14px">
+            <button type="button" id="cancel-match" class="btn-secondary">Fechar</button>
+          </div>
+        </div>
+        <div id="agenda-confirm-wrap" class="card hidden">
+          <h3>Confirmar agendamento</h3>
+          <p id="agenda-confirm-cuidador"></p>
+          <div class="form-grid">
+            <div>
+              <label>Data e horário</label>
+              <input id="ag-datahora" type="datetime-local">
+            </div>
+          </div>
+          <div class="panel-actions" style="margin-top:14px">
+            <button type="button" id="save-agenda" class="btn-primary">Agendar</button>
+            <button type="button" id="cancel-agenda" class="btn-secondary">Cancelar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- HISTÓRICO (agendamentos concluídos, real) -->
+      <section id="panel-history" class="panel">
+        <div id="history-list" class="list"></div>
+      </section>
+
+      <!-- MODO PÓS-ALTA (medicação + consulta médica) -->
+      <section id="panel-posalta" class="panel">
+        <p class="hint">Controle de medicamentos e consultas da recuperação pós-alta.</p>
+
+        <div class="card">
+          <h3>Medicações</h3>
+          <div class="panel-actions">
+            <button type="button" id="add-medicacao" class="btn-primary">+ Nova medicação</button>
+          </div>
+          <div id="medicacao-list" class="list"></div>
+          <div id="medicacao-form-wrap" class="card hidden">
+            <h3>Nova medicação</h3>
+            <div class="form-grid">
+              <div>
+                <label>Medicamento</label>
+                <input id="med-nome" type="text" placeholder="Ex.: Losartana 50mg">
+              </div>
+              <div>
+                <label>Dosagem</label>
+                <input id="med-dosagem" type="text" placeholder="Ex.: 1 comprimido">
+              </div>
+              <div>
+                <label>Horário</label>
+                <input id="med-horario" type="text" placeholder="Ex.: 08h e 20h">
+              </div>
+              <div>
+                <label>Início</label>
+                <input id="med-inicio" type="date">
+              </div>
+              <div>
+                <label>Fim (opcional)</label>
+                <input id="med-fim" type="date">
+              </div>
+              <div class="full">
+                <label>Observações</label>
+                <textarea id="med-obs" placeholder="Restrições, cuidados..."></textarea>
+              </div>
+            </div>
+            <div class="panel-actions" style="margin-top:14px">
+              <button type="button" id="save-medicacao" class="btn-primary">Salvar</button>
+              <button type="button" id="cancel-medicacao" class="btn-secondary">Cancelar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Consultas médicas</h3>
+          <div class="panel-actions">
+            <button type="button" id="add-consulta" class="btn-primary">+ Nova consulta</button>
+          </div>
+          <div id="consulta-list" class="list"></div>
+          <div id="consulta-form-wrap" class="card hidden">
+            <h3>Nova consulta</h3>
+            <div class="form-grid">
+              <div>
+                <label>Médico</label>
+                <input id="con-medico" type="text" placeholder="Nome do médico">
+              </div>
+              <div>
+                <label>Especialidade</label>
+                <input id="con-especialidade" type="text" placeholder="Ex.: Cardiologia">
+              </div>
+              <div>
+                <label>Data e horário</label>
+                <input id="con-data" type="datetime-local">
+              </div>
+              <div>
+                <label>É retorno?</label>
+                <select id="con-retorno">
+                  <option value="nao">Não</option>
+                  <option value="sim">Sim</option>
+                </select>
+              </div>
+              <div class="full">
+                <label>Observações</label>
+                <textarea id="con-obs" placeholder="Preparo necessário, exames a levar..."></textarea>
+              </div>
+            </div>
+            <div class="panel-actions" style="margin-top:14px">
+              <button type="button" id="save-consulta" class="btn-primary">Salvar</button>
+              <button type="button" id="cancel-consulta" class="btn-secondary">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MESSAGES -->
+      <section id="panel-messages" class="panel">
+        <div class="panel-actions">
+          <a href="chat.html" class="btn-primary" style="text-decoration:none;display:inline-block;">Abrir chat completo</a>
+        </div>
+        <div id="messages-list" class="list"></div>
+      </section>
+
+      <!-- PAYMENTS (mensalidade do próprio paciente) -->
+      <section id="panel-payments" class="panel">
+        <p class="hint">Sua mensalidade de acesso à plataforma (o Cuidado Puro não intermedia o pagamento do serviço prestado pelo cuidador — isso é acertado direto entre vocês).</p>
+        <div id="payments-list" class="list"></div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="panel-settings" class="panel">
+        <div class="card form-card">
+          <h3>Preferências do painel</h3>
+          <p class="hint">Apenas uma conveniência local neste navegador — não altera seu cadastro no banco.</p>
+          <label>Apelido de exibição</label>
+          <input id="s-name" type="text" placeholder="Como você quer ser chamado(a) neste painel">
+          <button type="button" id="save-settings" class="btn-primary">Salvar</button>
+          <p id="settings-saved" class="success-msg"></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/dashboardPacienteApp.js"></script>
+</body>
+</html>

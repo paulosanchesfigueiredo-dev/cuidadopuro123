@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Paciente</title>
+
+  <link rel="stylesheet" href="../css/cadastroPaciente.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="navbar">
+
+    <div class="logo">
+        <a href="../index.html"><img src="./img/logo_(2).png" alt="Logo"></a>
+          <a href="../index.html" class="logo-text">Cuidado Puro</a>
+    </div>
+
+
+    <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="beneficios.html">Benefícios</a></li>
+          <li><a href="opinioes.html">Opiniões</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+
+    <a href="telaLogin.html" class="btn-login" class="button">Entrar</a>
+
+</header>
+
+  <div class="container">
+
+    <div class="box">
+      <h1>Cadastro Paciente</h1>
+
+      <form class="form" id="formPaciente">
+        <input type="text" id="paciente_nome" placeholder="Nome completo" required>
+        <input type="text" id="paciente_rg" placeholder="RG" required>
+        <input type="text" id="paciente_cpf" placeholder="CPF" required>
+        <input type="text" id="paciente_endereco" placeholder="Endereço" required>
+        <input type="text" id="paciente_telefone" placeholder="Telefone" required>
+        <input type="number" id="paciente_idade" placeholder="Idade" required>
+        <input type="email" id="paciente_email" placeholder="E-mail" required>
+        <input type="password" id="paciente_senha" placeholder="Senha" required>  
+
+        <a formularioPaciente.html class="btn-cadastrar button" href="formularioPaciente.html">Adicionar formulario</a>
+
+      </form>
+
+
+<script src="../js/config.js" defer></script>
+<script src="../js/cadastro.js" defer></script>
+    </div>
+
+  </div>
+
+</body>
+</html>

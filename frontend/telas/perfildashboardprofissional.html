@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Cuidado Puro</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboardProfissional.css"> </head>
+<body>
+
+    <main class="main-container" style="padding: 40px; max-width: 800px; margin: 0 auto;">
+        <h1>Meu Perfil</h1>
+        <p>Confira abaixo as informações do seu cadastro.</p>
+        
+        <div class="card" style="padding: 20px; display: block;">
+            <h3>Dados Pessoais</h3>
+            <p><strong>Nome:</strong> <span id="perf-nome">...</span></p>
+            <p><strong>E-mail:</strong> <span id="perf-email">...</span></p>
+            <p><strong>Telefone:</strong> <span id="perf-telefone">...</span></p>
+            <p><strong>Endereço:</strong> <span id="perf-endereco">...</span></p>
+            <p><strong>Idade:</strong> <span id="perf-idade">...</span> anos</p>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+
+            <div id="bloco-profissional" style="display: none;">
+                <h3>Informações Profissionais</h3>
+                <p><strong>Registro (COREN/COFFITO):</strong> <span id="perf-registro">...</span></p>
+                <p><strong>Tempo de Experiência:</strong> <span id="perf-experiencia">...</span></p>
+                <p><strong>Especialidade Principal:</strong> <span id="perf-especialidade">...</span></p>
+                <p><strong>Procedimentos/Dispositivos:</strong> <span id="perf-dispositivos">...</span></p>
+                <p><strong>Capacitações:</strong> <span id="perf-detalhes">...</span></p>
+            </div>
+
+            <div id="bloco-paciente" style="display: none;">
+                <h3>Informações do Paciente</h3>
+                <p><strong>Nível de Suporte Necessário:</strong> <span id="perf-suporte">...</span></p>
+                <p><strong>Cidade:</strong> <span id="perf-cidade">...</span></p>
+            </div>
+            
+            <br>
+            <button class="btn" onclick="window.history.back()">Voltar ao Dashboard</button>
+        </div>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/perfildashboardprofissional.js"></script>
+</body>
+</html>

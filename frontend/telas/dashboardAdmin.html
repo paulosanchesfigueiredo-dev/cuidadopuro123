@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin — Cuidado Puro</title>
+  <link rel="stylesheet" href="../css/dashboardAdmin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- Login -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <p class="eyebrow">Área administrativa</p>
+      <h1>Cuidado Puro</h1>
+      <p class="login-hint">Acesso de demonstração. Senha: <strong>admin123</strong></p>
+      <label for="login-pass">Senha</label>
+      <input type="password" id="login-pass" placeholder="Digite a senha" autocomplete="current-password">
+      <p id="login-error" class="error-msg"></p>
+      <button type="button" id="login-btn" class="btn-primary">Entrar</button>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">♡</span>
+        <span class="brand-text">Cuidado Puro</span>
+      </div>
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-item active" data-panel="overview" data-label="Visão geral">
+          <i data-lucide="layout-dashboard"></i><span>Visão geral</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="traffic" data-label="Tráfego">
+          <i data-lucide="activity"></i><span>Tráfego</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="users" data-label="Usuários">
+          <i data-lucide="users"></i><span>Usuários</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="registrations" data-label="Cadastros">
+          <i data-lucide="user-plus"></i><span>Cadastros</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="payments" data-label="Mensalidades">
+          <i data-lucide="credit-card"></i><span>Mensalidades</span>
+        </button>
+        <button type="button" class="nav-item" data-panel="settings" data-label="Configurações">
+          <i data-lucide="settings"></i><span>Configurações</span>
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" id="logout-btn" class="btn-ghost"><i data-lucide="log-out"></i><span>Sair</span></button>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="top">
+        <h2 id="panel-title">Visão geral</h2>
+        <p class="top-sub">Painel administrativo — Cuidado Puro Home Health</p>
+      </header>
+
+      <!-- OVERVIEW -->
+      <section id="panel-overview" class="panel active">
+        <div class="stats stats-5">
+          <article class="stat-card">
+            <span class="stat-label">Usuários</span>
+            <strong id="stat-users">0</strong>
+            <span class="stat-note">total</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Ativos</span>
+            <strong id="stat-active">0</strong>
+            <span class="stat-note">online / ativos</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Inativos</span>
+            <strong id="stat-inactive">0</strong>
+            <span class="stat-note">desativados</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Visitas (30d)</span>
+            <strong id="stat-visits">0</strong>
+            <span class="stat-note">tráfego</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Receita mês</span>
+            <strong id="stat-revenue">R$ 0</strong>
+            <span class="stat-note">mensalidades</span>
+          </article>
+        </div>
+
+        <div class="chart-grid">
+          <div class="chart-card">
+            <h3>Tráfego — últimos 14 dias</h3>
+            <div class="chart-wrap"><canvas id="chart-traffic-mini"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Usuários por tipo</h3>
+            <div class="chart-wrap"><canvas id="chart-users-type"></canvas></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Mensalidades recentes</h3>
+          <div id="overview-payments" class="list"></div>
+        </div>
+        <div class="card">
+          <h3>Cadastros recentes</h3>
+          <div id="overview-regs" class="list"></div>
+        </div>
+      </section>
+
+      <!-- TRAFFIC -->
+      <section id="panel-traffic" class="panel">
+        <div class="stats">
+          <article class="stat-card">
+            <span class="stat-label">Hoje</span>
+            <strong id="traf-today">0</strong>
+            <span class="stat-note">visitas</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Esta semana</span>
+            <strong id="traf-week">0</strong>
+            <span class="stat-note">visitas</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Este mês</span>
+            <strong id="traf-month">0</strong>
+            <span class="stat-note">visitas</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Pico diário</span>
+            <strong id="traf-peak">0</strong>
+            <span class="stat-note">visitas</span>
+          </article>
+        </div>
+        <div class="chart-card" style="margin-bottom:16px">
+          <h3>Visitas diárias (30 dias)</h3>
+          <div class="chart-wrap" style="height:280px"><canvas id="chart-traffic-full"></canvas></div>
+        </div>
+        <div class="chart-grid">
+          <div class="chart-card">
+            <h3>Páginas mais visitadas</h3>
+            <div class="chart-wrap"><canvas id="chart-pages"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- USERS -->
+      <section id="panel-users" class="panel">
+        <div class="filters">
+          <input type="search" id="user-search" placeholder="Buscar por nome ou e-mail...">
+          <select id="user-filter-status">
+            <option value="all">Todos os status</option>
+            <option value="aprovado">Aprovados</option>
+            <option value="pendente">Pendentes</option>
+            <option value="recusado">Recusados</option>
+          </select>
+          <select id="user-filter-type">
+            <option value="all">Todos os tipos</option>
+            <option value="paciente">Pacientes</option>
+            <option value="cuidador">Cuidadores</option>
+          </select>
+        </div>
+        <div class="card table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Tipo</th>
+                <th>Status</th>
+                <th>Cadastro</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- REGISTRATIONS -->
+      <section id="panel-registrations" class="panel">
+        <div class="filters">
+          <input type="search" id="reg-search" placeholder="Buscar cadastro...">
+          <select id="reg-filter-status">
+            <option value="all">Todos</option>
+            <option value="pendente">Pendentes</option>
+            <option value="aprovado">Aprovados</option>
+            <option value="recusado">Recusados</option>
+          </select>
+        </div>
+        <div class="card table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Contato</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="regs-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PAYMENTS / MENSALIDADES -->
+      <section id="panel-payments" class="panel">
+        <div class="stats">
+          <article class="stat-card">
+            <span class="stat-label">Pagas</span>
+            <strong id="pay-paid-count">0</strong>
+            <span class="stat-note">este mês</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Pendentes</span>
+            <strong id="pay-pending-count">0</strong>
+            <span class="stat-note">aguardando</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Atrasadas</span>
+            <strong id="pay-late-count">0</strong>
+            <span class="stat-note">em atraso</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Total recebido</span>
+            <strong id="pay-total">R$ 0</strong>
+            <span class="stat-note">mês atual</span>
+          </article>
+        </div>
+        <div class="chart-card" style="margin-bottom:16px">
+          <h3>Mensalidades por status</h3>
+          <div class="chart-wrap" style="height:240px"><canvas id="chart-revenue"></canvas></div>
+        </div>
+        <div class="filters">
+          <input type="search" id="pay-search" placeholder="Buscar por nome...">
+          <select id="pay-filter-status">
+            <option value="all">Todos os status</option>
+            <option value="pago">Pago</option>
+            <option value="pendente">Pendente</option>
+            <option value="atrasado">Atrasado</option>
+          </select>
+        </div>
+        <div class="card table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Usuário</th>
+                <th>Plano</th>
+                <th>Valor</th>
+                <th>Vencimento</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="payments-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="panel-settings" class="panel">
+        <div class="card form-card">
+          <h3>Configurações do painel</h3>
+          <label>Nome do administrador</label>
+          <input id="s-name" type="text" placeholder="Admin Cuidado Puro">
+          <label>E-mail de contato</label>
+          <input id="s-email" type="email" placeholder="admin@cuidadopuro.com">
+          <button type="button" id="save-settings" class="btn-primary">Salvar</button>
+          <p id="settings-saved" class="success-msg"></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/dashboardAdmin.js"></script>
+</body>
+</html>

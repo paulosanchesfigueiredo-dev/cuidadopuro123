@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cuidado Puro Home Health - Login</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/telaescolha.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="../index.html"><img src="img/logo_(2).png" alt="Logo"></a>
+                <a href="../index.html" class="logo-text">Cuidado Puro</a>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="beneficios.html">Benefícios</a></li>
+                <li><a href="opinioes.html">Opiniões</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <a href="telaLogin.html" class="btn-login" class="button">Entrar</a>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main class="main-container">
+
+        <section class="logo-box">
+            <img src="img/logo.png" alt="Logo Cuidado Puro" class="logo-img">
+        </section>
+
+        <form id="formLogin" style="max-width:360px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
+            <input type="email" id="login_email" placeholder="E-mail" required
+                style="padding:12px;border-radius:8px;border:1px solid #2a3a55;background:#0e1b30;color:#edf1f5;">
+            <input type="password" id="login_senha" placeholder="Senha" required
+                style="padding:12px;border-radius:8px;border:1px solid #2a3a55;background:#0e1b30;color:#edf1f5;">
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+        <p style="text-align:center;margin-top:18px;font-size:13px;color:#a8b4c2;">
+            <a href="formularioProfissional.html" style="color:#68beb5;">Cadastro profissional</a>
+            &nbsp;·&nbsp;
+            <a href="formularioPaciente.html" style="color:#68beb5;">Cadastro paciente</a>
+            &nbsp;·&nbsp;
+            <a href="dashboardAdmin.html" style="color:#68beb5;">Admin</a>
+        </p>
+
+    </main>
+    <script src="../js/config.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

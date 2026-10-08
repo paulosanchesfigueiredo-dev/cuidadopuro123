@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Cuidado Puro Home Health</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contato.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html"><img src="img/logo_(2).png" alt="Logo"></a>
+            <a href="../index.html" class="logo-text">Cuidado Puro</a>
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="beneficios.html">Benefícios</a></li>
+                <li><a href="opinioes.html">Opiniões</a></li>
+                <li><a href="contato.html" style="color: #67c2b8;">Contato</a></li>
+            </ul>
+        </nav>
+
+        <a href="telaLogin.html" class="btn-login">Entrar</a>
+    </header>
+
+    <main class="contact-container">
+
+        <!-- Hero Section / Cabeçalho da Página -->
+        <section class="contact-hero">
+            <h1>Entre em Contato</h1>
+            <p>Estamos aqui para ajudar. Entre em contato com a equipe Cuidado Puro Home Health para tirar dúvidas, obter informações ou receber suporte.</p>
+        </section>
+
+        <div class="contact-grid">
+            
+            <!-- Informações de Contato -->
+            <section class="contact-info-section">
+                <h2>Fale Conosco</h2>
+                <p class="section-subtitle">Escolha uma das formas de contato abaixo para falar com nossa equipe.</p>
+
+                <div class="info-cards-list">
+                    <div class="info-card">
+                        <div class="icon">✉️</div>
+                        <div class="info-details">
+                            <h3>E-mail</h3>
+                            <p class="highlight">contato@cuidadopuro.com.br</p>
+                            <p class="subtext">Responderemos o mais breve possível.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon">📞</div>
+                        <div class="info-details">
+                            <h3>Telefone</h3>
+                            <p class="highlight">(44) 99999-9999</p>
+                            <p class="subtext">Atendimento e suporte aos usuários.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon">📍</div>
+                        <div class="info-details">
+                            <h3>Localização</h3>
+                            <p class="highlight">Maringá - Paraná</p>
+                            <p class="subtext">Atendimento na região e suporte online.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon">🕐</div>
+                        <div class="info-details">
+                            <h3>Horário de Atendimento</h3>
+                            <p class="highlight">Segunda a sexta: 08h às 18h</p>
+                            <p class="subtext">Suporte emergencial conforme disponibilidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formulário de Mensagem -->
+            <section class="contact-form-section">
+                <h2>Envie uma Mensagem</h2>
+                <form action="#" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assunto">Assunto</label>
+                        <select id="assunto" name="assunto" required>
+                            <option value="" disabled selected>Selecione um assunto</option>
+                            <option value="duvida">Dúvidas Gerais</option>
+                            <option value="suporte">Suporte Técnico</option>
+                            <option value="parceria">Parcerias e Serviços</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                </form>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Cuidado Puro Home Health. Conectando tecnologia, vidas e corações com responsabilidade.
+    </footer>
+
+  <script src="../js/config.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Dashboard - Cliente</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/dashboardPacientes.css">
+</head>
+
+<body>
+
+	<header class="navbar">
+
+		<div class="logo">
+			<a href="../index.html"><img src="img/logo_(2).png" alt="Logo"></a>
+			<a href="../index.html" class="logo-text">Cuidado Puro</a>
+		</div>
+
+		<nav>
+			<ul class="nav-links">
+				<li><a href="../index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="beneficios.html">Benefícios</a></li>
+                <li><a href="opinioes.html">Opiniões</a></li>
+                <li><a href="contato.html">Contato</a></li>
+			</ul>
+		</nav>
+
+	</header>
+
+	<aside class="sidebar-menu">
+	<div class="sidebar-brand">
+		<span class="sidebar-icon">☰</span>
+		<span class="sidebar-label">Menu</span>
+	</div>
+	<nav class="sidebar-links">
+		<a href="perfildashboardPaciente.html" class="sidebar-link">
+			<span class="sidebar-label">Meu Perfil</span>
+		</a>
+		<a href="formularioPaciente.html" class="sidebar-link">
+			<span class="sidebar-label">Atualização de Cadastro</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Meus Agendamentos</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Cuidadores Salvos</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Mensagens</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Diário de Cuidados</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Medicamentos e Receitas</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Contatos de Emergência</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Pagamentos e Faturas</span>
+		</a>
+		<a href="#" class="sidebar-link">
+			<span class="sidebar-label">Suporte e Ajuda</span>
+		</a>
+	</nav>
+	<a href="telaLogin.html" class="sidebar-logout" id="btnLogout">Sair</a>
+</aside>
+
+	<main class="main-container dashboard-container">
+
+		<section class="search-panel">
+			<h1>Encontre Cuidadores</h1>
+
+			<div class="search-row">
+				<input class="search-input" type="text" placeholder="Pesquisar por nome, cidade ou especialidade">
+				<a class="btn" href="#">Buscar</a>
+			</div>
+
+			<div class="filters">
+				<select class="filter">
+					<option>Qualquer especialidade</option>
+					<option>Cuidado Pessoal</option>
+					<option>Cuidados Domiciliares</option>
+				</select>
+				<select class="filter">
+					<option>Todas as cidades</option>
+					<option>Maringá</option>
+					<option>Sarandi</option>
+					<option>Paiçandu</option>
+				</select>
+			</div>
+		</section>
+		<section class="cards-grid">
+			<article class="card">
+				<img src="../cuidadopuro_teste/img/Design sem nome (2).png" alt="Perfil">
+				<div class="info">
+					<h3>Maria Silva</h3>
+					<p class="meta">Maringá · 5 anos de experiência</p>
+					<p class="rating">⭐ 4.8</p>
+					<a href="#" class="btn">Ver perfil</a>
+				</div>
+			</article>
+
+			<article class="card">
+				<img src="../cuidadopuro_teste/img/Design sem nome (2).png" alt="Perfil">
+				<div class="info">
+					<h3>João Pereira</h3>
+					<p class="meta">Sarandi · 3 anos de experiência</p>
+					<p class="rating">⭐ 4.6</p>
+					<a href="#" class="btn">Ver perfil</a>
+				</div>
+			</article>
+
+			<article class="card">
+				<img src="../cuidadopuro_teste/img/Design sem nome (2).png" alt="Perfil">
+				<div class="info">
+					<h3>João Pereira</h3>
+					<p class="meta">Sarandi · 3 anos de experiência</p>
+					<p class="rating">⭐ 4.6</p>
+					<a href="#" class="btn">Ver perfil</a>
+				</div>
+			</article>
+
+			<article class="card">
+				<img src="../cuidadopuro_teste/img/Design sem nome (2).png" alt="Perfil">
+				<div class="info">
+					<h3>João Pereira</h3>
+					<p class="meta">Sarandi · 3 anos de experiência</p>
+					<p class="rating">⭐ 4.6</p>
+					<a href="#" class="btn">Ver perfil</a>
+				</div>
+			</article>
+
+			<article class="card">
+				<img src="../cuidadopuro_teste/img/Design sem nome (2).png" alt="Perfil">
+				<div class="info">
+					<h3>João Pereira</h3>
+					<p class="meta">Sarandi · 3 anos de experiência</p>
+					<p class="rating">⭐ 4.6</p>
+					<a href="#" class="btn">Ver perfil</a>
+				</div>
+			</article>
+
+			<article class="card">
+				<img src="../cuidadopuro_teste/img/Design sem nome (2).png" alt="Perfil">
+				<div class="info">
+					<h3>Ana Costa</h3>
+					<p class="meta">Paiçandu · 7 anos de experiência</p>
+					<p class="rating">⭐ 4.9</p>
+					<a href="#" class="btn">Ver perfil</a>
+				</div>
+			</article>
+		</section>
+    </main>
+    <main class="dashboard-container">	
+
+	</main>
+</html>
+  <script src="../js/config.js"></script>
+  <script src="../js/config.js"></script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Paciente</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dashboardPacientes.css"> </head>
+<body>
+
+    <main class="main-container" style="padding: 40px; max-width: 800px; margin: 0 auto;">
+        <h1>Meu Perfil (Paciente)</h1>
+        <p>Confira abaixo os dados cadastrais e as informações do questionário de saúde.</p>
+        
+        <div class="card" style="padding: 20px; display: block; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h3>Dados Cadastrais</h3>
+            <p><strong>Nome do Responsável:</strong> <span id="perf-nome">...</span></p>
+            <p><strong>E-mail:</strong> <span id="perf-email">...</span></p>
+            <p><strong>Telefone:</strong> <span id="perf-telefone">...</span></p>
+            <p><strong>Endereço:</strong> <span id="perf-endereco">...</span></p>
+            <p><strong>Idade:</strong> <span id="perf-idade">...</span> anos</p>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+            <h3>Informações Clínicas</h3>
+            <p><strong>Nível de Suporte Necessário:</strong> <span id="perf-suporte">...</span></p>
+            <p><strong>Histórico / Observações / Alergias:</strong></p>
+            <p id="perf-observacoes" style="background: #f9f9f9; padding: 10px; border-left: 4px solid #007bff; font-style: italic;">...</p>
+            
+            <br>
+            <button class="btn" onclick="window.history.back()" style="cursor: pointer;">Voltar ao Dashboard</button>
+        </div>
+    </main>
+
+    <script src="../js/config.js" defer></script>
+    <script src="../js/perfildashboardpaciente.js" defer></script>
+</body>
+</html>

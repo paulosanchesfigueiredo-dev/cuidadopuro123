@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat — Cuidado Puro</title>
+  <link rel="stylesheet" href="../css/chat.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <!-- Sessão (login real, não é escolha de demo) -->
+  <div id="role-screen" class="login-screen">
+    <div class="login-card">
+      <p class="eyebrow">Mensagens</p>
+      <h1>Cuidado Puro</h1>
+      <p class="login-hint" id="role-screen-msg">Você precisa entrar com seu e-mail e senha para ver suas conversas.</p>
+      <a href="telaLogin.html" class="btn-primary" style="text-decoration:none;display:inline-block;text-align:center;">Ir para o login</a>
+      <p style="text-align:center;margin:16px 0 0;font-size:13px;">
+        <a href="../index.html" style="color:#9cb1d9;text-decoration:none;">← Voltar ao site</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- App de chat -->
+  <div id="app" class="app hidden">
+    <header class="topbar">
+      <div class="topbar-brand">
+        <span class="brand-icon">♡</span>
+        <span>Cuidado Puro · Chat</span>
+      </div>
+      <div class="topbar-meta">
+        <span class="badge-role" id="role-badge">Paciente</span>
+        <span id="user-label">Ana Lúcia</span>
+        <button type="button" id="switch-role" class="btn-ghost" title="Trocar perfil">
+          <i data-lucide="refresh-cw"></i>
+        </button>
+        <button type="button" id="back-site" class="btn-ghost" title="Sair">
+          <i data-lucide="log-out"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="chat-shell">
+      <!-- Lista de conversas -->
+      <aside class="conv-panel" id="conv-panel">
+        <div class="conv-header">
+          <h2>Conversas</h2>
+          <input type="search" id="conv-search" class="conv-search" placeholder="Buscar conversa...">
+        </div>
+        <div class="conv-list" id="conv-list"></div>
+      </aside>
+
+      <!-- Thread -->
+      <main class="thread-panel" id="thread-panel">
+        <div id="thread-empty" class="thread-empty">
+          <i data-lucide="message-circle" style="width:40px;height:40px;opacity:0.5"></i>
+          <h3>Selecione uma conversa</h3>
+          <p>Escolha um contato à esquerda para ver e enviar mensagens.</p>
+        </div>
+
+        <div id="thread-active" class="hidden" style="display:flex;flex-direction:column;height:100%;min-height:0;">
+          <div class="thread-header">
+            <button type="button" id="back-to-list" class="btn-ghost hidden" style="display:none">
+              <i data-lucide="arrow-left"></i>
+            </button>
+            <div class="avatar" id="thread-avatar">M</div>
+            <div class="thread-header-info">
+              <h3 id="thread-name">—</h3>
+              <p><span class="status-dot"></span><span id="thread-sub">Online</span></p>
+            </div>
+          </div>
+          <div class="messages" id="messages"></div>
+          <div class="composer">
+            <textarea id="msg-input" rows="1" placeholder="Digite uma mensagem..."></textarea>
+            <button type="button" class="btn-send" id="send-btn" title="Enviar">
+              <i data-lucide="send"></i>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/chat.js"></script>
+</body>
+</html>
